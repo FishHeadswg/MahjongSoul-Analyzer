@@ -202,6 +202,7 @@
             this._hideOverlay = !this._hideOverlay;
             if (this._hideOverlay) doc.getElementById("hideOverlay").innerText = "Show Overlay";
             else doc.getElementById("hideOverlay").innerText = "Hide Overlay";
+            if (view.DesktopMgr.Inst && view.DesktopMgr.Inst.mainrole.hand.length) view.DesktopMgr.Inst.mainrole.hand.forEach(tile => tile._SetColor(new Laya.Vector4(1, 1, 1, 1)));
         }
         sortTable() {
             var table, rows, switching, i, x, y, shouldSwitch;
