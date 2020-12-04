@@ -56,6 +56,7 @@
             this._riverHelper = +localStorage.riverHelper || 0;
             this.mountain = new Array(34).fill(4);
             this.syaCount = 0;
+            this._hideOverlay = false;
 
         }
         set handAnalyzer(i) {
@@ -177,7 +178,8 @@
                                 <tr><td>Seven Pair: </td><td id="7Pair">N/A</td></tr>
                                 <tr><td>Dragons: </td><td id="dragons">N/A</td></tr>
                             </table>
-                            <div style="text-align: center;"><button id="startAnal" style="background: black; color: #ccc;">Analyze hand</button></div>
+                            <div style="text-align: center;"><button id="btnStartAnal" style="background: black; color: #ccc;">Analyze hand</button></div>
+                            <div style="text-align: center;"><button id="btnHideOverlay" style="background: black; color: #ccc;">Hide Overlay</button></div>
                         </body>
                     </html>`);
                 for (let i = 0; i < 34; i++) {
@@ -188,12 +190,18 @@
                     else if (i < 27 && i >= 9) j -= 9;
                     div.id = Analyzer.indexToString(j);
                     doc.getElementById("masks").appendChild(div);
-                    doc.getElementById("startAnal").addEventListener("click", e => this.analyzeHand());
+                    doc.getElementById("btnStartAnal").addEventListener("click", e => this.analyzeHand());
+                    doc.getElementById("btnHideOverlay").addEventListener("click", e => this.hideOverlay());
                 }
             })
             this._handAnalyzer = 1;
             document.body.appendChild(b);
             window.addEventListener("beforeunload", () => this.window.close());
+        }
+        hideOverlay() {
+            this._hideOverlay = !this._hideOverlay;
+            if (this._hideOverlay) doc.getElementById("hideOverlay").innerText = "Show Overlay";
+            else doc.getElementById("hideOverlay").innerText = "Hide Overlay";
         }
         sortTable() {
             var table, rows, switching, i, x, y, shouldSwitch;
@@ -395,7 +403,7 @@
                 }
                 const r = Math.max(0, rate ** 3 * -1) * 0.6;
                 const g = Math.max(0, rate ** 3) * 0.6;
-                if (this._handAnalyzer) tile._SetColor(new Laya.Vector4(1, 1, 1 - r - g, 1));
+                if (this._handAnalyzer && !this._hideOverlay) tile._SetColor(new Laya.Vector4(1, 1, 1 - r - g, 1));
             });
             return option;
         }
