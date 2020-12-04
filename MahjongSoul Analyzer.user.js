@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MahjongSoul Analyzer
 // @namespace    https://github.com/FishHeadswg/
-// @version      0.0.1
+// @version      0.0.2
 // @description  Analyzes possible winning hands with weighted probabilities (eventually)
 // @author       FishHeadswg
 // @updateURL    https://github.com/FishHeadswg/MahjongSoul-Analyzer/raw/master/MahjongSoul%20Analyzer.user.js
@@ -56,7 +56,7 @@
             this._riverHelper = +localStorage.riverHelper || 0;
             this.mountain = new Array(34).fill(4);
             this.syaCount = 0;
-            this._hideOverlay = false;
+            this._hideOverlay = false; // Turn on if streaming unless you want to get banned like me. Even for friendly matches.
 
         }
         set handAnalyzer(i) {
@@ -189,10 +189,10 @@
                     if (i < 9) j += 18;
                     else if (i < 27 && i >= 9) j -= 9;
                     div.id = Analyzer.indexToString(j);
-                    doc.getElementById("masks").appendChild(div);
-                    doc.getElementById("btnStartAnal").addEventListener("click", e => this.analyzeHand());
-                    doc.getElementById("btnHideOverlay").addEventListener("click", e => this.hideOverlay());
+                    doc.getElementById("masks").appendChild(div);                    
                 }
+                doc.getElementById("btnStartAnal").addEventListener("click", e => this.analyzeHand());
+                doc.getElementById("btnHideOverlay").addEventListener("click", e => this.hideOverlay());
             })
             this._handAnalyzer = 1;
             document.body.appendChild(b);
@@ -202,7 +202,7 @@
             if (!this.window) return;
             const d = this.window.document;
             this._hideOverlay = !this._hideOverlay;
-            if (this._hideOverlay) d.getElementById("btnHideOverlay").innerText = "Show Overlay";
+            if (this._hideOverlay === true) d.getElementById("btnHideOverlay").innerText = "Show Overlay";
             else d.getElementById("btnHideOverlay").innerText = "Hide Overlay";
             if (view.DesktopMgr.Inst && view.DesktopMgr.Inst.mainrole.hand.length) view.DesktopMgr.Inst.mainrole.hand.forEach(tile => tile._SetColor(new Laya.Vector4(1, 1, 1, 1)));
         }
