@@ -202,8 +202,8 @@
             if (!this.window) return;
             const d = this.window.document;
             this._hideOverlay = !this._hideOverlay;
-            if (this._hideOverlay) d.getElementById("hideOverlay").innerText = "Show Overlay";
-            else d.getElementById("hideOverlay").innerText = "Hide Overlay";
+            if (this._hideOverlay) d.getElementById("btnHideOverlay").innerText = "Show Overlay";
+            else d.getElementById("btnHideOverlay").innerText = "Hide Overlay";
             if (view.DesktopMgr.Inst && view.DesktopMgr.Inst.mainrole.hand.length) view.DesktopMgr.Inst.mainrole.hand.forEach(tile => tile._SetColor(new Laya.Vector4(1, 1, 1, 1)));
         }
         sortTable() {
