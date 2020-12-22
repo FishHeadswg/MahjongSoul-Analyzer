@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MahjongSoul Analyzer
 // @namespace    https://github.com/FishHeadswg/
-// @version      0.0.2
+// @version      1.0.0
 // @description  Analyzes possible winning hands with weighted probabilities (eventually)
 // @author       FishHeadswg
 // @updateURL    https://github.com/FishHeadswg/MahjongSoul-Analyzer/raw/master/MahjongSoul%20Analyzer.user.js
@@ -18,7 +18,7 @@
             this.reinit();
             this.capture();
             this.appendEx();
-            this.initDefI(); // WIP
+            this.initDefI();
         }
         reinit() {
             this.sevPair = 0; //closed
@@ -56,7 +56,7 @@
             this._riverHelper = +localStorage.riverHelper || 0;
             this.mountain = new Array(34).fill(4);
             this.syaCount = 0;
-            this._hideOverlay = false; // Turn on if streaming unless you want to get banned like me. Even for friendly matches.
+            this._hideOverlay = false; // Note: Turn on if streaming. Even for friendly matches.
 
         }
         set handAnalyzer(i) {
