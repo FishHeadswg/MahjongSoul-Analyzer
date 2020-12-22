@@ -2,7 +2,7 @@
 // @name         MahjongSoul Analyzer
 // @namespace    https://github.com/FishHeadswg/
 // @version      1.0.0
-// @description  Analyzes possible winning hands with weighted probabilities (eventually)
+// @description  Analyzes possible winning hands with weighted probabilities.
 // @author       FishHeadswg
 // @updateURL    https://github.com/FishHeadswg/MahjongSoul-Analyzer/raw/master/MahjongSoul%20Analyzer.user.js
 // @downloadURL  https://github.com/FishHeadswg/MahjongSoul-Analyzer/raw/master/MahjongSoul%20Analyzer.user.js
